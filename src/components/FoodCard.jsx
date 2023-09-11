@@ -1,7 +1,12 @@
 import React from "react";
 import {AiFillStar} from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/slices/CartSlice";
 
 function FoodCard({data}){
+
+
+
     return (
         <>
         <div className="font-bold w-[250px] bg-white p-5 flex flex-col rounded-lg gap-2">
