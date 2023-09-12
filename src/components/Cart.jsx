@@ -1,7 +1,7 @@
 import React,{useState} from "react";
 import {IoMdClose} from "react-icons/io";
 import ItemCart from "./ItemCart";
-import { UseSelector, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import {FaShoppingCart} from "react-icons/fa"
  
 function Cart(){
@@ -24,9 +24,9 @@ function Cart(){
                 <IoMdClose onClick={closeCartHandler} className="border-2 border-gray-600 text-gray-600 rounded-md hover:text-red-300 hover:border-red-300 cursor-pointer" />
             </div>
             {
-                cartItems.map(function(items){
+               cartItems.length > 0 ? cartItems.map(function(items){
                     return <ItemCart key = {items.id} data = {items}/>
-                })
+                }) : <h2 className="text-center text-xl font-bold text-gray-800">Your cart is empty</h2>
             }
             
             <div className="absolute bottom-0 mb-5">

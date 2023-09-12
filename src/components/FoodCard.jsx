@@ -8,14 +8,7 @@ function FoodCard({data}){
     const dispatch = useDispatch();
     function addToCartHandler(){
         console.log("clicked");
-        dispatch(addToCart({
-            id : data.id,
-            img: data.img,
-            name: data.name,
-            price: data.price,
-            rating : data.rating,
-            qty : 1
-        }));
+        dispatch(addToCart({...data, qty : 1}));
     }
 
     return (
