@@ -3,6 +3,7 @@ import FoodCard from "./FoodCard";
 import FoodData from "../data/FoodData.js";
 
 
+
 function FoodItem(){
     return(
         <>

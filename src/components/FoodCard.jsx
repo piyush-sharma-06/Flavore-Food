@@ -5,7 +5,18 @@ import { addToCart } from "../redux/slices/CartSlice";
 
 function FoodCard({data}){
 
-
+    const dispatch = useDispatch();
+    function addToCartHandler(){
+        console.log("clicked");
+        dispatch(addToCart({
+            id : data.id,
+            img: data.img,
+            name: data.name,
+            price: data.price,
+            rating : data.rating,
+            qty : 1
+        }));
+    }
 
     return (
         <>
@@ -22,7 +33,7 @@ function FoodCard({data}){
                 <span className="flex jusify-center items-center">
                     <AiFillStar className="mr-1 text-yellow-500" />{data.rating}
                 </span>
-                <button className="p-1 text-white bg-green-500 hover:bg-green-600 rounded-lg text-sm">Add To Cart</button>
+                <button onClick={addToCartHandler} className="p-1 text-white bg-green-500 hover:bg-green-600 rounded-lg text-sm">Add To Cart</button>
                 
             </div>
         </div>
