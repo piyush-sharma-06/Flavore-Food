@@ -25,7 +25,7 @@ function ItemCart({data}){
     return(
         <>
         <div className='flex gap-2 shadow-md rounded-md p-2 mb-3'>
-            <MdDelete onClick={deleteCartHandler} className='absolute right-7 text-gray-600 cursor-pointer' />
+            <div><MdDelete onClick={deleteCartHandler} className='absolute right-7 text-gray-600 cursor-pointer' /></div>
             <img className='w-[50px] h-[50px]' src={data.img} alt="" />
             <div className='leading-5'>
                 <h2 className='font-bold text-gray-800'>

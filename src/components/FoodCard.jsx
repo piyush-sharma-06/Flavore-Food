@@ -3,12 +3,13 @@ import {AiFillStar} from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/slices/CartSlice";
 
-function FoodCard({data}){
+function FoodCard({data, handleToast}){
 
     const dispatch = useDispatch();
     function addToCartHandler(){
         console.log("clicked");
         dispatch(addToCart({...data, qty : 1}));
+        handleToast(data.name);
     }
 
     return (

@@ -8,6 +8,12 @@ function Cart(){
 
     const [activeCart, setactiveCart] = useState(false);
     const cartItems = useSelector((state)=>state.cart.cart);
+    const totalQty = cartItems.reduce(function(pre,item){
+        return pre + item.qty;
+    },0);
+    const totalAmount = cartItems.reduce(function(pre,item){
+        return pre + (item.price*item.qty);
+    },0);
     console.log(cartItems);
     function closeCartHandler(){
         setactiveCart(false);
@@ -30,13 +36,13 @@ function Cart(){
             }
             
             <div className="absolute bottom-0 mb-5">
-                <h3 className="font-semibold text-gray-800">Items : </h3>
-                <h3 className="font-semibold text-gray-800">Total Amount : </h3>
+                <h3 className="font-semibold text-gray-800">Items : {totalQty}</h3>
+                <h3 className="font-semibold text-gray-800">Total Amount : {totalAmount}</h3>
                 <hr className="lg:w-[18vw] w-[90vw] my-2"/>
                 <button className="bg-green-500 font-bold px-3 text-white py-2 rounded-lg lg:w-[18vw] w-[90vw]">CheckOut</button>
             </div>
         </div>
-        <FaShoppingCart onClick={enableCartHandler} className="bg-white shandow-md p-3 text-5xl rounded-full  fixed bottom-4 right-4 cursor-pointer" />
+        <FaShoppingCart onClick={enableCartHandler} className={`bg-white shandow-md p-3 text-5xl rounded-full  fixed bottom-4 right-4 cursor-pointer ${totalQty > 0 ? "animate-bounce":"git"}`} />
         </>
     );
 }
