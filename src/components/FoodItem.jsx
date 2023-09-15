@@ -6,6 +6,9 @@ import { useSelector} from "react-redux";
 
 
 function FoodItem(){
+    const searchItem = useSelector(function(state){
+        return state.search.search;
+    })
     function handleToast(name){
         toast.success(`Added ${name}`);
     }
@@ -14,9 +17,14 @@ function FoodItem(){
     })
     const actualItems = FoodData.filter(function(item) {
         if (categoryToDisplay === "All") {
-            return true; 
+            if(item.name.toLowerCase().includes(searchItem.toLowerCase())){
+                return true;
+            }
         } else {
-            return item.category === categoryToDisplay;
+            return (
+                categoryToDisplay === item.category &&
+                item.name.toLowerCase().includes(searchItem.toLowerCase())
+            );
         }
     });
     

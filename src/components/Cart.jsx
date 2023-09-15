@@ -3,6 +3,7 @@ import {IoMdClose} from "react-icons/io";
 import ItemCart from "./ItemCart";
 import { useSelector } from "react-redux";
 import {FaShoppingCart} from "react-icons/fa"
+import { Link } from "react-router-dom";
  
 function Cart(){
 
@@ -39,7 +40,13 @@ function Cart(){
                 <h3 className="font-semibold text-gray-800">Items : {totalQty}</h3>
                 <h3 className="font-semibold text-gray-800">Total Amount : {totalAmount}</h3>
                 <hr className="lg:w-[18vw] w-[90vw] my-2"/>
-                <button className="bg-green-500 font-bold px-3 text-white py-2 rounded-lg lg:w-[18vw] w-[90vw]">CheckOut</button>
+
+                {
+                    totalQty===0 ? <button className="bg-green-500 font-bold px-3 text-white py-2 rounded-lg lg:w-[18vw] w-[90vw]">CheckOut</button> : <Link to={"/success"}><button className="bg-green-500 font-bold px-3 text-white py-2 rounded-lg lg:w-[18vw] w-[90vw]">CheckOut</button></Link>
+                }
+
+
+                
             </div>
         </div>
         <FaShoppingCart onClick={enableCartHandler} className={`bg-white shandow-md p-3 text-5xl rounded-full  fixed bottom-4 right-4 cursor-pointer ${totalQty > 0 ? "animate-bounce":"git"}`} />
